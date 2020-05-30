@@ -61,6 +61,6 @@ public class VirtualPetTest {
     @Test
     public void catsAlsoAreReal(){
         OrganicCat underTest = new OrganicCat("mew","meow");
-        RobotCat alsoTest = new RobotCat
+        RobotCat alsoTest = new RobotCat("mow","beep mew");
     }
 }
