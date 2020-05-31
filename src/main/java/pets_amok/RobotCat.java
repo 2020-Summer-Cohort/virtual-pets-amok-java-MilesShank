@@ -7,6 +7,8 @@ public class RobotCat extends RobotPet{
 
     @Override
     public void getsOiled() {
-
+        int oil=this.getPetOil();
+        oil++;
+        this.setPetOil(oil);
     }
 }

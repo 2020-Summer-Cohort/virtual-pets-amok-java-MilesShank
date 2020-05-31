@@ -63,4 +63,12 @@ public class VirtualPetTest {
         OrganicCat underTest = new OrganicCat("mew","meow");
         RobotCat alsoTest = new RobotCat("mow","beep mew");
     }
+    @Test
+    public void PetHealthCalculatorExists(){
+        PetHealthCalculator myCalculator = new PetHealthCalculator();
+        RobotCat alsoTest = new RobotCat("mow","beep mew");
+        myCalculator.calculateRoboCat(alsoTest);
+        RobotDog bigTest = new RobotDog("bow","wow");
+        myCalculator.calculateRoboDog(bigTest);
+    }
 }

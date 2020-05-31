@@ -7,7 +7,7 @@ import java.util.Map;
 public class VirtualPetShelter {
     Map <String,String> petData = new HashMap<>();
     Map <String,VirtualPet> petShelter = new HashMap<>();
-
+    PetHealthCalculator myCalculator = new PetHealthCalculator();
     public Map getPetShelter() {
         return petShelter;
     }
@@ -63,6 +63,22 @@ public class VirtualPetShelter {
             }
         }
     }
+    public void oilAllPets(){
+         for (Map.Entry<String, String> entry : petData.entrySet()) {
+            VirtualPet robotPet = getPet(entry.getKey());
+            if (robotPet instanceof RoboticNeeds) {
+                ((RoboticNeeds) robotPet).getsOiled();
+            }
+        }
+    }
+    public void cleanAllCages(){
+        for (Map.Entry<String, String> entry : petData.entrySet()) {
+            VirtualPet organicDog = getPet(entry.getKey());
+            if (organicDog instanceof OrganicDog) {
+                ((OrganicDog) organicDog).setCageWasteLevel(0);
+            }
+        }
+    }
     public void walkAllPets(){
             for (Map.Entry<String, String> entry : petData.entrySet()) {
                 VirtualPet dogPets = getPet(entry.getKey());
@@ -81,16 +97,28 @@ public class VirtualPetShelter {
 
     public void tick() {
         for(Map.Entry<String, String> entry : petData.entrySet()){
-            VirtualPet hungryPet = getPet(entry.getKey());
-            if(hungryPet instanceof OrganicPet){
-                //blah blah blah organic stuff dont forget pet waste
-            }else if (hungryPet instanceof RobotPet){
-                //blahblahblah maintain robot stuff
+            VirtualPet myNeedyPet = getPet(entry.getKey());
+            if(myNeedyPet instanceof OrganicPet){
+               int hasToPee =((OrganicPet) myNeedyPet).getPetBathroomNeeds();
+               hasToPee++;
+               ((OrganicPet) myNeedyPet).setPetBathroomNeeds(hasToPee);
+                int hungry = ((OrganicPet) myNeedyPet).getPetHunger();
+                hungry--;
+                ((OrganicPet) myNeedyPet).setPetHunger(hungry);
+                int thirsty = ((OrganicPet) myNeedyPet).getPetThirst();
+                thirsty--;
+                ((OrganicPet) myNeedyPet).setPetThirst(thirsty);
+            }else if (myNeedyPet instanceof RobotPet){
+               int oil = ((RobotPet) myNeedyPet).getPetOil();
+               oil--;
+               ((RobotPet) myNeedyPet).setPetOil(oil);
+                }
+            myCalculator.setHealthByType(myNeedyPet);
             }
         }
 
         }
-    }
 
 
-//}
+
+
