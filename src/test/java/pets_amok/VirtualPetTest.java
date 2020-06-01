@@ -70,5 +70,7 @@ public class VirtualPetTest {
         myCalculator.calculateRoboCat(alsoTest);
         RobotDog bigTest = new RobotDog("bow","wow");
         myCalculator.calculateRoboDog(bigTest);
+        OrganicCat littleTest = new OrganicCat("mow","muw");
+        myCalculator.calculateOrganicCat(littleTest);
     }
 }
