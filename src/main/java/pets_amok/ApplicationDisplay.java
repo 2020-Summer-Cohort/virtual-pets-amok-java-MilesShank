@@ -1,9 +1,9 @@
 package pets_amok;
 
-public class VirtualPetShelterDisplay {
+public class ApplicationDisplay {
 
     public static void initialInstructions(){
-        System.out.println("here's where the instructions are gunna go when I feel like typing them all out");
+        System.out.println("WELCOME TO THE PET SHELTER!!!! HERE YOU CAN TAKE CARE OF MANY PETS!");
 
     }
     public static void mainMenu(){

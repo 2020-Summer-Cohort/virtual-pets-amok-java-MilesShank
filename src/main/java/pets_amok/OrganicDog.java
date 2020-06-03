@@ -42,7 +42,7 @@ private int cageWasteLevel;
 
     @Override
     public void goesOnWalk() {
-        this.setPetBathroomNeeds(5);
+        this.setPetBathroomNeeds(0);
         int happiness = this.getPetHappiness();
         happiness++;
         this.setPetHappiness(happiness);

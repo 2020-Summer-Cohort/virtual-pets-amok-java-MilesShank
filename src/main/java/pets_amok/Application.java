@@ -3,7 +3,7 @@ package pets_amok;
 import java.util.Map;
 import java.util.Scanner;
 
-public class VirtualPetShelterApp {
+public class Application {
 
     static VirtualPetShelter myShelter = new VirtualPetShelter();
 
@@ -11,8 +11,8 @@ public class VirtualPetShelterApp {
     public static void main (String[] args){
       Scanner input = new Scanner(System.in);
         shelterSetup();
-        VirtualPetShelterDisplay.initialInstructions();
-        VirtualPetShelterDisplay.mainMenu();
+        ApplicationDisplay.initialInstructions();
+        ApplicationDisplay.mainMenu();
         while(true){
             int userCommand = input.nextInt();
             gameLoop(userCommand);
@@ -35,67 +35,69 @@ public class VirtualPetShelterApp {
             case 0:
             for(Map.Entry<String, VirtualPet> entry: myShelter.petShelter.entrySet()){
                 VirtualPet thisPet = entry.getValue();
-                VirtualPetShelterDisplay.displayPetStatus(thisPet);
+                ApplicationDisplay.displayPetStatus(thisPet);
 
             }
                 break;
 
             case 1:
                 feedPets();
-                VirtualPetShelterDisplay.displayFeedPets();
+                ApplicationDisplay.displayFeedPets();
                 gameLoop();
                 break;
 
             case 2:;
                 waterPets();
-                VirtualPetShelterDisplay.displayWaterPets();
+                ApplicationDisplay.displayWaterPets();
                 gameLoop();
                 break;
 
             case 3:
                 walkPets();
-                VirtualPetShelterDisplay.displayWalkPets();
+                ApplicationDisplay.displayWalkPets();
                 gameLoop();
                 break;
 
             case 4:
-                VirtualPetShelterDisplay.displaySelectPet();
+                ApplicationDisplay.displaySelectPet();
                 String walkPetName = getUserInput();
                 walkOnePet(walkPetName);
-                VirtualPetShelterDisplay.displayWalkOnePet(walkPetName);
+                ApplicationDisplay.displayWalkOnePet(walkPetName);
                 gameLoop();
                 break;
             case 5:
                 oilPets();
-                VirtualPetShelterDisplay.displayOilPets();
+                ApplicationDisplay.displayOilPets();
                 gameLoop();
+                break;
             case 6:
                 cleanCages();
-                VirtualPetShelterDisplay.displayCleanCages();
+                ApplicationDisplay.displayCleanCages();
                 gameLoop();
+                break;
             case 7:
-                VirtualPetShelterDisplay.displayAdoptionPrompt();
+                ApplicationDisplay.displayAdoptionPrompt();
                 String adoptedPet = getUserInput();
 
                 adoptPet(adoptedPet);
 
-                VirtualPetShelterDisplay.displayAdoptPet(adoptedPet);
+                ApplicationDisplay.displayAdoptPet(adoptedPet);
                 break;
 
             case 8:;
-                VirtualPetShelterDisplay.displayNewPetNamePrompt();
+                ApplicationDisplay.displayNewPetNamePrompt();
                 String newPetName = getUserInput();
-                VirtualPetShelterDisplay.displayNewPetDescriptionPrompt();
+                ApplicationDisplay.displayNewPetDescriptionPrompt();
                 String newPetDescription = getUserInput();
-                VirtualPetShelterDisplay.displayNewPetTypePrompt();
+                ApplicationDisplay.displayNewPetTypePrompt();
                 String type = getUserInput();
                 admitPet(newPetName,newPetDescription,type.toLowerCase());
-                VirtualPetShelterDisplay.displayAdmitPet(newPetName);
+                ApplicationDisplay.displayAdmitPet(newPetName);
                 break;
-            default: VirtualPetShelterDisplay.userCommandError();
+            default: ApplicationDisplay.userCommandError();
                 break;
         }
-        VirtualPetShelterDisplay.mainMenu();
+        ApplicationDisplay.mainMenu();
     }
 
     private static String getUserInput() {
@@ -123,20 +125,14 @@ public class VirtualPetShelterApp {
     public static void walkPets(){myShelter.walkAllPets();}
     public static void walkOnePet(String walkPetName){myShelter.walkOnePet(walkPetName);}
     public static void cleanCages(){myShelter.cleanAllCages();}
-    //public static void entertainPets(){
-      //  myShelter.entertainAllPets();
-    //}
 
-    //public static void entertainOnePet(String petToEntertain){
-      //  myShelter.entertainOnePet(petToEntertain);
-    //}
+
 
     public static void adoptPet(String petToAdopt){
         myShelter.adoptOutPet(petToAdopt);
     }
     public static void admitPet(String petName,String petDescription, String type){
-       // VirtualPet newPet = new VirtualPet(petName, petDescription);
-        //BE SURE TO PROMPT THE USER FOR THE PET TYPE
+
 
         myShelter.addNewPet(petName, petDescription,type);
     }

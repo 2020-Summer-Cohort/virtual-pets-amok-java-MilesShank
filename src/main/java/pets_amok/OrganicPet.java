@@ -1,6 +1,6 @@
 package pets_amok;
 
-public abstract class OrganicPet extends VirtualPet implements OrganicNeeds {
+public abstract class OrganicPet extends VirtualPet  {
 
     private int petHunger;
     private int petThirst;
@@ -26,7 +26,7 @@ public abstract class OrganicPet extends VirtualPet implements OrganicNeeds {
         super(petName, petDescription);
             this.petHunger = 5;
             this.petThirst = 5;
-            this.petBathroomNeeds = 5;
+            this.petBathroomNeeds = 1;
     }
 
     public int getPetHunger() {
@@ -39,4 +39,14 @@ public abstract class OrganicPet extends VirtualPet implements OrganicNeeds {
     public int getPetBathroomNeeds() {
         return petBathroomNeeds;
     }
+
+    public void feed(){
+        int hunger = this.getPetHunger();
+        hunger--;
+        this.setPetHunger(hunger);}
+
+    public void water(){
+        int thirst=this.getPetThirst();
+        thirst--;
+        this.setPetThirst(thirst);}
 }

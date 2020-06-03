@@ -1,6 +1,10 @@
 package pets_amok;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Collection;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class VirtualPetTest {
@@ -73,4 +77,42 @@ public class VirtualPetTest {
         OrganicCat littleTest = new OrganicCat("mow","muw");
         myCalculator.calculateOrganicCat(littleTest);
     }
+
+
+    @Test
+    public void petShelterShouldExist() {
+
+        VirtualPetShelter newShelter = new VirtualPetShelter();
+        Map petData = newShelter.getPetData();
+        Map petShelter = newShelter.getPetShelter();
+        Collection petCollection = newShelter.getAllPets();
+        newShelter.addNewPet("bruce","robot","robot cat");
+        VirtualPet robotPet = newShelter.getPet("bruce");
+        if (robotPet instanceof RobotCat){
+            assertEquals(5,((RobotCat) robotPet).getPetOil());
+            newShelter.oilAllPets();
+            assertEquals(6,((RobotCat) robotPet).getPetOil());
+        }
+        newShelter.addNewPet("bob","swell guy","organic dog");
+        VirtualPet shelterPet = newShelter.getPet("bob");
+        if (shelterPet instanceof OrganicDog){
+        assertEquals(5, ((OrganicDog) shelterPet).getPetHunger());
+        newShelter.feedAllPets();
+        assertEquals(6,((OrganicDog) shelterPet).getPetHunger());
+        assertEquals(5,((OrganicDog) shelterPet).getPetThirst());
+        newShelter.waterAllPets();
+        assertEquals(6,((OrganicDog) shelterPet).getPetThirst());
+
+
+            assertEquals(1,((OrganicDog) shelterPet).getPetBathroomNeeds());
+        newShelter.walkAllPets();
+            assertEquals(0,((OrganicDog) shelterPet).getPetBathroomNeeds());
+            ((OrganicDog) shelterPet).setPetBathroomNeeds(6);
+        newShelter.tick();
+        assertEquals(0,((OrganicDog) shelterPet).getPetBathroomNeeds());
+        assertEquals(1,((OrganicDog) shelterPet).getCageWasteLevel());
+        assertEquals(5,((OrganicDog)shelterPet).getPetHunger());
+        newShelter.adoptOutPet("bob");
+            System.out.println(petData);}
+}
 }

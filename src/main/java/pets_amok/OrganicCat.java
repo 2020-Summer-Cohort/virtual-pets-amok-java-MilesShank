@@ -8,7 +8,7 @@ public class OrganicCat extends OrganicPet{
     @Override
     public void feed() {
         int hunger = this.getPetHunger();
-        hunger++;
+        hunger--;
         this.setPetHunger(hunger);
 
     }
@@ -16,7 +16,7 @@ public class OrganicCat extends OrganicPet{
     @Override
     public void water() {
         int thirst=this.getPetThirst();
-        thirst++;
+        thirst--;
         this.setPetThirst(thirst);
     }
 }

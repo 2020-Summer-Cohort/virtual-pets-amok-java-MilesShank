@@ -34,7 +34,7 @@ public class VirtualPetShelter {
             newPet = new RobotDog(newPetName,newPetDescription);
         }else if (type == "organic cat"){
             newPet = new OrganicCat(newPetName,newPetDescription);
-        }else if(type == "organic dog"){
+        }else {
             newPet = new OrganicDog(newPetName,newPetDescription);
         }
 
@@ -59,7 +59,7 @@ public class VirtualPetShelter {
         for (Map.Entry<String, String> entry : petData.entrySet()) {
             VirtualPet thirstyPet = getPet(entry.getKey());
             if (thirstyPet instanceof OrganicPet) {
-                ((OrganicPet) thirstyPet).feed();
+                ((OrganicPet) thirstyPet).water();
             }
         }
     }
@@ -117,7 +117,7 @@ public class VirtualPetShelter {
             }
         }
 
-        }
+}
 
 
 

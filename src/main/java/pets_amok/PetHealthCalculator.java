@@ -61,7 +61,7 @@ public class PetHealthCalculator {
         for (int i = 0; i < Array.length; i++) {
             if ( Array[i] <= 0 ){
                 health--;
-            }
+            }else{}
         }
         health = health - waste;
         myOrganicDog.setPetHealth(health);
